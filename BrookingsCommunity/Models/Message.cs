@@ -8,7 +8,7 @@ namespace BrookingsCommunity.Models
     public class Message
     {
         public string MessageText { get; set; }
-        public User MessageSender { get; set; }
-        public User MessageReceiver { get; set; }
+        public String MessageSender { get; set; }
+        public String MessageReceiver { get; set; }
     }
 }

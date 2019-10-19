@@ -27,8 +27,8 @@ namespace BrookingsCommunity.Controllers
             {
                 message = new Message()
                 {
-                    MessageSender = John,
-                    MessageReceiver = Jane,
+                    MessageSender = "John",
+                    MessageReceiver = "Jane",
                     MessageText = "Hello"
                 };
                 MessageRepo.AddMessage(message);
@@ -70,8 +70,8 @@ namespace BrookingsCommunity.Controllers
             return View();
         }
         [HttpPost]
-        public RedirectToActionResult ContactPage(User messageSender,
-                                      User messageReceiver, string messageText)
+        public RedirectToActionResult ContactPage(string messageSender,
+                                      string messageReceiver, string messageText)
         {
             message = new Message();
             message.MessageSender = messageSender;

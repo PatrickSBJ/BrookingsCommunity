@@ -11,8 +11,8 @@
     List of Messages: <br />
     @foreach (Message message in Model)
     {
-        <span>From: </span>@message.MessageSender.Name; <br />
-        <span>To: </span>@message.MessageReceiver.Name; <br />
+        <span>From: </span>@message.MessageSender; <br />
+        <span>To: </span>@message.MessageReceiver; <br />
         <span>Message: </span>@message.MessageText; <br />
         <br />
     }
