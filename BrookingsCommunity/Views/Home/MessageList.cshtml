@@ -1,0 +1,24 @@
+﻿@model List<Message>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messages</title>
+</head>
+<body>
+    List of Messages: <br />
+    @foreach (Message message in Model)
+    {
+        <span>From: </span>@message.MessageSender.Name; <br />
+        <span>To: </span>@message.MessageReceiver.Name; <br />
+        <span>Message: </span>@message.MessageText; <br />
+        <br />
+    }
+    <br>
+    <a href="/Home/ContactPage">Send a Message</a><br />
+    <a href="/Home">Home</a>
+</body>
+</html>
+

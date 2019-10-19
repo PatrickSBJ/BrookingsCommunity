@@ -1,0 +1,38 @@
+﻿@model List<User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <form method="post" id="messageForm">
+        <label for="MessageSender">From:</label>
+        <select name="messageSender" form="messageForm">
+        <option></option>
+            @foreach (User user in Model)
+            {
+                <option value=@user>@user.Name</option>
+            }
+        </select> <br />
+        <label for="messageReceiver">To:</label>
+        <select name="messageReceiver" form="messageForm">
+            <option></option>
+            @foreach (User user in Model)
+            {
+                <option value="@user">@user.Name</option>
+            }
+        </select> <br />
+        <label for="MessageText">Your Message:</label>
+        <input name="messageText" /><br />
+        <input type="submit" value="Send" />
+    </form>
+        <a href="/Home/MessageList">List of messages</a>
+    </body>
+</html>
