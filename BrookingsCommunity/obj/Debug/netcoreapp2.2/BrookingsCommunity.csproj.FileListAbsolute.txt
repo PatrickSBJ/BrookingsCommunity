@@ -34,3 +34,4 @@ C:\Users\Patrick\Documents\Visual Studio 2017\Projects\BrookingsCommunity\Brooki
 C:\Users\Patrick\Documents\Visual Studio 2017\Projects\BrookingsCommunity\BrookingsCommunity\obj\Debug\netcoreapp2.2\Razor\Views\Home\LocationsPage.g.cshtml.cs
 C:\Users\Patrick\Documents\Visual Studio 2017\Projects\BrookingsCommunity\BrookingsCommunity\obj\Debug\netcoreapp2.2\Razor\Views\Home\PeoplePage.g.cshtml.cs
 C:\Users\Patrick\Documents\Visual Studio 2017\Projects\BrookingsCommunity\BrookingsCommunity\obj\Debug\netcoreapp2.2\Razor\Views\Home\MessageList.g.cshtml.cs
+C:\Users\Patrick\Documents\Visual Studio 2017\Projects\BrookingsCommunity\BrookingsCommunity\obj\Debug\netcoreapp2.2\Razor\Views\Home\AddReply.g.cshtml.cs

@@ -6,15 +6,30 @@
 <html>
 <head>
     <title>Messages</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    List of Messages: <br />
+    <h1>List of Messages:</h1> <br />
     @foreach (Message message in Model)
     {
-        <span>From: </span>@message.MessageSender; <br />
-        <span>To: </span>@message.MessageReceiver; <br />
-        <span>Message: </span>@message.MessageText; <br />
         <br />
+        <div class="@message.MessagePriority">
+            <span>From: </span>@message.MessageSender <br />
+            <span>To: </span>@message.MessageReceiver<br />
+            <span>Message: </span>@message.MessageText <br />
+            <span>Date Sent: </span>@message.DateCreated<br />
+        </div>
+        
+        @if (message.Replies.Count > 0)
+        {
+            <h3>Replies to this message: </h3>
+            @foreach (Reply r in message.Replies)
+            {
+                @r.ReplyText <br />
+            }
+            <br />
+        }
+        <a asp-action="AddReply" asp-route-title="@message.MessageSender">Add a Reply</a> <br />
     }
     <br>
     <a href="/Home/ContactPage">Send a Message</a><br />

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ImportantLocation>
+@{
     Layout = null;
 }
 
@@ -13,9 +14,12 @@
 <body>
     <div class="text-center">
         <h1>Important Brookings Locations</h1>
-        <p>
-            Coming Soon.
-        </p>
+        @foreach (ImportantLocation location in Model)
+        {
+            <span>Name: </span>@location.Name<br />
+            <span>Significance: </span>@location.Significance<br />
+            <a href="@location.LinkToInfo">More Information</a>
+        }
     </div>
 </body>
 </html>

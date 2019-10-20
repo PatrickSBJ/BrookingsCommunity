@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ImportantPerson>
+@{
     Layout = null;
 }
 
@@ -12,10 +13,13 @@
 </head>
 <body>
     <div class="text-center">
-        <h1>Important Brookings People</h1>
-        <p>
-            Coming Soon.
-        </p>
+        <h1>Important Brookings Locations</h1>
+        @foreach (ImportantPerson person in Model)
+        {
+            <span>Name: </span>@person.Name<br />
+            <span>Achievements: </span>@person.Achievements<br />
+            <a href="@person.LinkToInfo">More Information</a>
+        }
     </div>
 </body>
 </html>

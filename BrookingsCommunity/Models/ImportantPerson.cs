@@ -9,5 +9,6 @@ namespace BrookingsCommunity.Models
     {
         public string Name { get; set; }
         public string Achievements { get; set; }
+        public string LinkToInfo { get; set; }
     }
 }

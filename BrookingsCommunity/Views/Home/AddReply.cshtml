@@ -1,0 +1,25 @@
+﻿@model String
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reply to Message</title>
+</head>
+<body>
+    <h1>Reply to this message: <em>@Model</em> </h1>
+
+    <form method="post">
+        <label for="replyText">Your reply</label><br />
+        <textarea type="text" name="replytext"></textarea><br />
+        <label for="messageSender">Your name</label><br />
+        <input name="messageSender" /><br />
+
+        <input type="submit" value="Enter" />
+    </form>
+</body>
+</html>
