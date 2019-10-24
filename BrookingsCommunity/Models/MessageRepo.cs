@@ -18,7 +18,7 @@ namespace BrookingsCommunity.Models
         {
             messages.Add(message);
         }
-        public static Message GeMessageBySender(string messageSender)
+        public static Message GetMessageBySender(string messageSender)
         {
             Message message = messages.Find(m => m.MessageSender == messageSender);
             return message;

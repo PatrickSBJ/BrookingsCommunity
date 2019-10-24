@@ -8,6 +8,6 @@ namespace BrookingsCommunity.Models
     public class Reply
     {
         public string ReplyText { get; set; }
-        public User ReplySender { get; set; }
+        public string ReplySender { get; set; }
     }
 }

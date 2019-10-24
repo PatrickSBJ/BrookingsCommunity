@@ -25,11 +25,12 @@
             <h3>Replies to this message: </h3>
             @foreach (Reply r in message.Replies)
             {
-                @r.ReplyText <br />
+                <span> Reply From: </span>@r.ReplySender <br />
+                <span>---></span>@r.ReplyText <br />
             }
             <br />
         }
-        <a asp-action="AddReply" asp-route-title="@message.MessageSender">Add a Reply</a> <br />
+        <a asp-action="AddReply" asp-route-messageSender="@message.MessageSender">Add a Reply</a> <br />
     }
     <br>
     <a href="/Home/ContactPage">Send a Message</a><br />

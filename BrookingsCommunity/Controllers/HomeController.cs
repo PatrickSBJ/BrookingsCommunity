@@ -118,19 +118,17 @@ namespace BrookingsCommunity.Controllers
 
             return RedirectToAction("ContactPage");
         }
-        public IActionResult AddReply(string messageReceiver)
+        public IActionResult AddReply(string messageSender)
         {
-            return View("AddReply", HttpUtility.HtmlDecode(messageReceiver));
+            return View("AddReply", HttpUtility.HtmlDecode(messageSender));
         }
         [HttpPost]
-        public RedirectToActionResult AddReply(string messageSender,
-                                                string replyText,
-                                                string replySender)
+        public RedirectToActionResult AddReply(string messageSender, string replyText, string replySender)
         {
-            Message message = MessageRepo.GeMessageBySender(messageSender);
+            Message message = MessageRepo.GetMessageBySender(messageSender);
             message.Replies.Add(new Reply()
             {
-                ReplySender = new User() { Name = replySender },
+                ReplySender = replySender,
                 ReplyText = replyText
             });
             return RedirectToAction("MessageList");
