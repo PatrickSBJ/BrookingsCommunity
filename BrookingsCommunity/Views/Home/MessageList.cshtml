@@ -1,14 +1,8 @@
 ﻿@model List<Message>
 @{
-    Layout = null;
+    ViewData["Title"] = "Messages";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Messages</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-</head>
-<body>
+    <div class="alert-info">Number of Messages = @ViewBag.messageCount</div>
     <h1>List of Messages:</h1> <br />
     @foreach (Message message in Model)
     {
@@ -35,6 +29,5 @@
     <br>
     <a href="/Home/ContactPage">Send a Message</a><br />
     <a href="/Home">Home</a>
-</body>
-</html>
+
 

@@ -1,25 +1,12 @@
 ﻿@model List<ImportantLocation>
 @{
-    Layout = null;
+    ViewData["Title"] = "Locations Page";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Locations Page</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-</head>
-<body>
-    <div class="text-center">
-        <h1>Important Brookings Locations</h1>
+      <h1>Important Brookings Locations</h1>
         @foreach (ImportantLocation location in Model)
         {
             <span>Name: </span>@location.Name<br />
             <span>Significance: </span>@location.Significance<br />
             <a href="@location.LinkToInfo">More Information</a>
         }
-    </div>
-</body>
-</html>

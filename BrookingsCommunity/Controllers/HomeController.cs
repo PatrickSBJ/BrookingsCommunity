@@ -79,6 +79,7 @@ namespace BrookingsCommunity.Controllers
         {
             List<Message> messages = MessageRepo.Messages;
             messages.Sort((m1, m2) => DateTime.Compare(m1.DateCreated, m2.DateCreated));
+            ViewBag.messageCount = messages.Count; 
             return View(messages);
         }
         public ViewResult HistoryPage()

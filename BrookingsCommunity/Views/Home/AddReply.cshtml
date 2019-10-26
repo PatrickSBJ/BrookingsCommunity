@@ -1,25 +1,23 @@
 ﻿@model String
 @{
-    Layout = null;
+    Layout = "_FormLayout";
+    ViewBag.Title = "Reply";
 }
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Reply to Message</title>
-</head>
-<body>
+
     <h1>Reply to <em>@Model</em>'s message: </h1>
 
     <form method="post">
-        <label for="replyText">Your reply</label><br />
-        <textarea type="text" name="replyText"></textarea><br />
-        <label for="replySender">Your name</label><br />
-        <input name="replySender" /><br />
-
-        <input type="submit" value="Enter" />
+        <div class="form-group">
+            <label for="replyText">Your reply</label><br />
+            <textarea type="text" name="replyText"></textarea><br />
+        </div>
+        <div class="form-group">
+            <label for="replySender">Your name</label><br />
+            <input name="replySender" /><br />
+        </div>
+            <input type="submit" class="btn btn-dark" value="Enter" />
     </form>
-</body>
-</html>
+

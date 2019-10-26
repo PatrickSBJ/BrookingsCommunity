@@ -1,18 +1,11 @@
 ﻿@model List<User>
 @{
-    Layout = null;
+    Layout = "_FormLayout";
+    ViewBag.Title = "Contact";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Contact Page</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-</head>
-<body>
-    <form method="post" id="messageForm">
+<form method="post" id="messageForm">
+    <div class="form-group">
         <label for="MessageSender">From:</label>
         <select name="messageSender" form="messageForm">
             <option></option>
@@ -21,6 +14,8 @@
                 <option value=@user.Name>@user.Name</option>
             }
         </select> <br />
+    </div>
+    <div class="form-group">
         <label for="messageReceiver">To:</label>
         <select name="messageReceiver" form="messageForm">
             <option></option>
@@ -29,17 +24,21 @@
                 <option value="@user.Name">@user.Name</option>
             }
         </select> <br />
+    </div>
+    <div class="form-group">
         <label for="MessageText">Your Message:</label>
         <input name="messageText" /><br />
+    </div>
+    <div class="form-group">
         <label for="messagePriority">How important is your message?</label>
         <select name="messagePriority" form="messageForm">
             <option></option>
-                <option value="text-danger">1 - URGENT MUST READ</option>
-                <option value="text-warning">2 - Kind of important I guess</option>
-                <option value="text-info">3 - Eh read it if you want</option> 
+            <option value="text-danger">1 - URGENT MUST READ</option>
+            <option value="text-warning">2 - Kind of important I guess</option>
+            <option value="text-info">3 - Eh read it if you want</option>
         </select> <br />
-        <input type="submit" value="Send" />
-    </form>
+    </div>
+        <input type="submit" class="btn btn-dark" value="Send" />
+</form>
         <a href="/Home/MessageList">List of messages</a>
-    </body>
-</html>
+

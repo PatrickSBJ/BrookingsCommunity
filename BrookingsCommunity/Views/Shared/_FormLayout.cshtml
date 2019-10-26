@@ -3,17 +3,22 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <style>
-        #mainDiv {
-            padding: 30px;
-            font-size: 20pt;
+        body
+        {
+            background-color: darksalmon;
+        }
+        #mainDiv
+        {
+            padding-top: 30px;
+            padding-left: 50px;
         }
     </style>
 </head>
 <body>
-    <div id="mainDiv" class="text-center">
+    <div class="container" id="mainDiv">
         @RenderBody()
     </div>
 </body>
