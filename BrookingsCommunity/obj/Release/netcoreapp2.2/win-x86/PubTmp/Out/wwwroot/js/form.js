@@ -1,0 +1,1 @@
+﻿setInterval(function () { alert("Annoying alert. Tag helper test") }, 5000);
