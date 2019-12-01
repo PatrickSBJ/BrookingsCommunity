@@ -12,7 +12,7 @@ namespace BrookingsCommunity.Controllers
         {
             return View();
         }
-        public IActionResult PageOne()
+        public ContentResult PageOne()
         {
             return Content("Demo");
         }
