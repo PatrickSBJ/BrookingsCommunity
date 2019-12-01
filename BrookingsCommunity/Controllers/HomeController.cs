@@ -4,48 +4,35 @@ using System.Linq;
 using BrookingsCommunity.Models;
 using System.Collections.Generic;
 using System.Web;
+using BrookingsCommunity.Repos;
 
 
 namespace BrookingsCommunity.Controllers
 {
     public class HomeController : Controller
     {
-        Message message;
-        User John = new User()
-        {
-            Name = "John",
-            Email = "John@gmail.com"
-        };
-        User Jane = new User()
-        {
-            Name = "Jane",
-            Email = "Jane@gmail.com"
-        };
-        ImportantLocation location1;
-        ImportantPerson person1;
+        IMessageRepo repo;
         
 
+        ImportantLocation location1;
+        ImportantPerson person1;
 
-
-        public HomeController()
+        User john = new User()
         {
-            if (MessageRepo.Messages.Count == 0) 
-            {
-                message = new Message()
-                {
-                    MessageSender = "John",
-                    MessageReceiver = "Jane",
-                    MessageText = "Sent from the beginning of time",
-                    DateCreated = DateTime.MinValue
-                };
-                MessageRepo.AddMessage(message);
-            }
+            Name = "John",
+            Email = "eh@gmail.com",
+        };
+        User jane = new User()
+        {
+            Name = "Jane",
+            Email = "ha@gmail.com",
+        };
+        
+        
 
-            if(UserDirectory.Users.Count == 0)
-            {
-                UserDirectory.AddUser(John);
-                UserDirectory.AddUser(Jane);
-            }
+        public HomeController(IMessageRepo r)
+        {
+            repo = r;
 
             if (ImportantLocationRepo.Locations.Count == 0)
             {
@@ -69,15 +56,20 @@ namespace BrookingsCommunity.Controllers
                 };
                 ImportantPeopleRepo.AddImportantPerson(person1);
             }
+            if (UserDirectory.Users.Count == 0)
+            {
+                UserDirectory.AddUser(john);
+                UserDirectory.AddUser(jane);
+            }
 
         }
-        public ViewResult Index()
+        public IActionResult Index()
         {
             return View();
         }
         public ViewResult MessageList()
         {
-            List<Message> messages = MessageRepo.Messages;
+            List<Message> messages = repo.Messages;
             messages.Sort((m1, m2) => DateTime.Compare(m1.DateCreated, m2.DateCreated));
             ViewBag.messageCount = messages.Count; 
             return View(messages);
@@ -109,13 +101,13 @@ namespace BrookingsCommunity.Controllers
         public RedirectToActionResult ContactPage(string messageSender,
                                       string messageReceiver, string messageText, string messagePriority)
         {
-            message = new Message();
+            Message message = new Message();
             message.MessageSender = messageSender;
             message.MessageReceiver = messageReceiver;
             message.MessageText = messageText;
             message.DateCreated = DateTime.Now;
             message.MessagePriority = messagePriority;
-            MessageRepo.AddMessage(message); 
+            repo.AddMessage(message); 
 
             return RedirectToAction("ContactPage");
         }
@@ -126,7 +118,7 @@ namespace BrookingsCommunity.Controllers
         [HttpPost]
         public RedirectToActionResult AddReply(string messageSender, string replyText, string replySender)
         {
-            Message message = MessageRepo.GetMessageBySender(messageSender);
+            Message message = repo.GetMessageBySender(messageSender);
             message.Replies.Add(new Reply()
             {
                 ReplySender = replySender,
