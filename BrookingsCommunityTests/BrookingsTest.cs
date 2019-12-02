@@ -41,9 +41,27 @@ namespace BrookingsCommunityTests
         }
         //verify that the AddReply HttPost method adds a reply for a specific message
         [Fact]
+        public void LocationsPageTest()
+        {
+            //Arrange
+            var homeController = new HomeController();
+
+            //Act
+            //Assert
+        }
+        [Fact]
         public void AddReplyTest()
         {
+            // Arrange 
+            var repo = new FakeMessageRepo();
+            AddTestMessages(repo);
+            var homeController = new HomeController(repo);
 
+            //Act
+            homeController.AddReply("John", "I am replying", "Jane");
+
+            //Assert
+            Assert.Equal("I am replying", repo.GetMessageBySender("John").Replies[0].ReplyText);
         }
         // This method adds two messages, and one reply to the repository.
         private void AddTestMessages(FakeMessageRepo repo)
