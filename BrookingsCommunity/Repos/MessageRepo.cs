@@ -3,48 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BrookingsCommunity.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrookingsCommunity.Repos
 {
     public class MessageRepo : IMessageRepo
     {
-        private static List<Message> messages = new List<Message>();
+        private AppDbContext context;
 
-        public List<Message> Messages { get { return messages; } }
-        public MessageRepo()
+
+        public List<Message> Messages { get { return context.Messages.Include("Replies").ToList(); } }
+        public MessageRepo(AppDbContext appDbContext)
         {
-           if (messages.Count == 0)
-            {
-                AddSeedData();
-            }
+            context = appDbContext;
         }
         public void AddMessage(Message message)
         {
-            messages.Add(message);
+            context.Messages.Add(message);
+            context.SaveChanges();
+        }
+        public void AddReply(Message message, Reply reply)
+        {
+            message.Replies.Add(reply);
+            context.Messages.Update(message);
+            context.SaveChanges();
         }
         public Message GetMessageBySender(string messageSender)
         {
-            Message message = messages.Find(m => m.MessageSender == messageSender);
+            Message message = context.Messages.First(m => m.MessageSender == messageSender);
             return message;
         }
-        void AddSeedData()
-        {
-            Message message = new Message()
-            {
-                MessageText = "New Message",
-                MessageSender = "John",
-                MessageReceiver = "Jane",
-                MessagePriority = "text-danger",
-            };
 
-            Reply reply = new Reply()
-            {
-                ReplySender = "Jane",
-                ReplyText = "Hello Hello",
-            };
-            message.Replies.Add(reply);
-            messages.Add(message);
-
-        }
     }
 }

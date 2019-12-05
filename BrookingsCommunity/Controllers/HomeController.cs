@@ -119,11 +119,12 @@ namespace BrookingsCommunity.Controllers
         public RedirectToActionResult AddReply(string messageSender, string replyText, string replySender)
         {
             Message message = repo.GetMessageBySender(messageSender);
-            message.Replies.Add(new Reply()
-            {
-                ReplySender = replySender,
-                ReplyText = replyText
-            });
+            repo.AddReply(message,
+                new Reply()
+                {
+                    ReplySender = replySender,
+                    ReplyText = replyText,
+                });
             return RedirectToAction("MessageList");
         }
     }

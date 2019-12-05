@@ -7,6 +7,7 @@ namespace BrookingsCommunity.Models
 {
     public class Message
     {
+        public int MessageID { get; set; }
         private List<Reply> replies = new List<Reply>();
 
         public string MessageText { get; set; }

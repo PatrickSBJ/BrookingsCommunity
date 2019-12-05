@@ -10,6 +10,8 @@ namespace BrookingsCommunity.Repos
     {
         List<Message> Messages { get; }
         void AddMessage(Message message);
+        void AddReply(Message message, Reply reply);
+
         Message GetMessageBySender(string messageSender);
     }
 }

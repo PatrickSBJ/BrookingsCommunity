@@ -15,6 +15,12 @@ namespace BrookingsCommunity.Repos
         {
             messages.Add(message);
         }
+
+        public void AddReply(Message message, Reply reply)
+        {
+            throw new NotImplementedException();
+        }
+
         public Message GetMessageBySender(string messageSender)
         {
             Message message = messages.Find(m => m.MessageSender == messageSender);

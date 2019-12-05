@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BrookingsCommunity.Repos;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrookingsCommunity
 {
@@ -36,6 +37,9 @@ namespace BrookingsCommunity
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient<IMessageRepo, MessageRepo>();
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+                Configuration["ConnectionStrings:LocalDbConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

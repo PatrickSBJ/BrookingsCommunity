@@ -7,6 +7,8 @@ namespace BrookingsCommunity.Models
 {
     public class ImportantLocation
     {
+        public int ImportantLocationID { get; set; }
+
         public string Name { get; set; }
         public string Significance { get; set; }
         public string LinkToInfo { get; set; }
